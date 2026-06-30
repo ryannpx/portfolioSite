@@ -1,0 +1,400 @@
+/* ==========================================================================
+   HCI Portfolio — styles.css
+   YOU own the visual design. Each section below has TODO hints.
+   Work top to bottom. Ask for feedback after each section.
+   ========================================================================== */
+
+/* === STEP 1: GLOBAL — your turn ===
+   Hints:
+   - Define CSS variables in :root for colors, fonts, spacing
+   - @import or <link> a Google Font in index.html <head>
+   - Use box-sizing: border-box on everything
+   Suggested starter variables:
+     --color-bg: #fafafa;
+     --color-text: #1a1a1a;
+     --color-muted: #666;
+     --color-accent: #8b9dc3;
+     --font-body: system-ui, sans-serif;
+     --space-sm: 0.5rem;
+     --space-md: 1rem;
+     --space-lg: 2rem;
+     --max-width: 960px;
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* TODO: add your color and spacing variables here */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+/* Skip link — keep visible on focus for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* === STEP 2: NAV — your turn ===
+   Hints:
+   - .site-header: sticky top, light background, subtle shadow optional
+   - .site-nav: display flex; justify-content space-between; align-items center
+   - .nav-links: flex list, remove bullets (list-style none), gap between items
+   - .nav-contact: flex row for email/LinkedIn/GitHub links
+   - Style link hover states
+*/
+
+.site-header {
+  /* TODO */
+}
+
+.site-nav {
+  /* TODO: flex container, max-width, horizontal padding */
+}
+
+.nav-logo {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+.nav-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-contact-label {
+  /* TODO: optional — hide on small screens */
+}
+
+/* === STEP 3: HERO — your turn ===
+   Hints (inspired by centered circular-photo layout):
+   - .hero: text-align center, generous padding
+   - .hero-photo: width/height equal, border-radius 50%, object-fit cover, margin auto
+   - .hero-title: slightly smaller than h1, muted color
+   - .hero-tagline: smaller still, max-width for readability
+   Optional: uncomment banner in index.html and style .hero-banner img { width 100%; height auto; }
+*/
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+}
+
+.hero-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+}
+
+.hero-tagline {
+  margin: 0;
+  max-width: 36ch;
+  margin-inline: auto;
+}
+
+/* === STEP 4: ABOUT — your turn ===
+   Hints (inspired by two-column intro with bio box):
+   - .about-grid: display grid; grid-template-columns 1fr 1fr; gap
+   - .bio-box: background #f0f0f0 or var, border-radius, padding
+   - .btn-resume: border, padding, inline-block, hover state
+   - .skills-list: flex wrap or inline list with pill-style tags
+   - Stack to one column on mobile (see Step 7)
+*/
+
+.about {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.bio-box {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-list li {
+  background: #eee;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
+
+/* === STEP 5: PROJECTS — your turn ===
+   Hints:
+   - .section-header: pale blue/accent background bar, full width feel
+   - .projects-grid: display grid; grid-template-columns repeat(auto-fit, minmax(280px, 1fr)); gap
+   - .project-card: border or shadow, border-radius, overflow hidden
+   - .badge: small pill — .badge-research vs .badge-wip different colors
+   - Card hover: transform translateY or box-shadow transition
+*/
+
+.projects {
+  padding: 2rem 1rem;
+}
+
+.section-header {
+  background: #e8eef5;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.projects-view-label {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0 0 1rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.project-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-bottom: 1rem;
+}
+
+.project-card h3,
+.project-card p,
+.project-card .btn {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin: 1rem 1rem 0.5rem;
+  border-radius: 4px;
+}
+
+.badge-research {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-wip {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.project-updated {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* === STEP 6: CONTACT & FOOTER — your turn ===
+   Hints:
+   - .contact: centered text, padding
+   - .contact-links: list-style none, flex column or row with gap
+   - .site-footer: muted text, centered, border-top optional
+*/
+
+.contact {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.875rem;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+/* === CASE STUDY PAGES (project-research.html, project-personal.html) ===
+   Style after homepage sections are done, or reuse shared classes.
+*/
+
+.case-study {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.case-study-subtitle {
+  font-size: 1.125rem;
+  color: #666;
+}
+
+.screenshot {
+  margin: 1.5rem 0;
+}
+
+.screenshot img {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.screenshot figcaption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.screenshot-note {
+  font-size: 0.875rem;
+  color: #666;
+  font-style: italic;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.tech-stack li {
+  background: #eee;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.link-note {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* === STEP 7: RESPONSIVE POLISH — your turn ===
+   Hints:
+   - @media (max-width: 768px): stack .about-grid to 1 column
+   - Hide or simplify .nav-contact on small screens
+   - Reduce hero photo size
+   - Add :focus-visible outlines on links/buttons for keyboard users
+*/
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* TODO: add more mobile tweaks */
+}
+
+/* TODO: focus states for accessibility */
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #8b9dc3;
+  outline-offset: 2px;
+}
