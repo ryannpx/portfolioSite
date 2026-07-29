@@ -130,6 +130,31 @@ ul {
   gap: 0.5rem;
 }
 
+/* Icon links: swap the size/color values to restyle */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #1a1a1a;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-link svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+.icon-link:hover {
+  background-color: #f7d7e3;
+  color: #000;
+}
+
 .nav-contact-label {
   /* TODO: optional — hide on small screens */
 }
@@ -289,6 +314,71 @@ ul {
 .project-card .btn {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+/* Carousel — one slide visible at a time, arrows scroll the track.
+   Tweak: --carousel-height for slide size, .carousel-btn for arrow style. */
+.carousel {
+  position: relative;
+  --carousel-height: 260px;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  margin: 0;
+  padding: 0.5rem;
+  background: #fdfdfc;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: var(--carousel-height);
+  object-fit: contain;
+}
+
+.carousel-slide figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: calc(var(--carousel-height) / 2);
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-btn:hover {
+  background: #fff;
+}
+
+.carousel-prev {
+  left: 0.5rem;
+}
+
+.carousel-next {
+  right: 0.5rem;
 }
 
 .badge {
