@@ -301,6 +301,7 @@ ul {
   background: #e8eef5;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
+  border-radius: 12px;
 }
 
 .section-header h2 {
@@ -519,13 +520,9 @@ ul {
   color: #666;
 }
 
-/* === STEP 7: RESPONSIVE POLISH — your turn ===
-   Hints:
-   - @media (max-width: 768px): stack .about-grid to 1 column
-   - Hide or simplify .nav-contact on small screens
-   - Reduce hero photo size
-   - Add :focus-visible outlines on links/buttons for keyboard users
-*/
+.site-footer {
+  background-color: #fdfdfc;
+}
 
 @media (max-width: 768px) {
   .about-grid {
