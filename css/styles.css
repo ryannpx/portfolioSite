@@ -249,17 +249,23 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   background-color: #ffffed;
 }
 
 .btn {
-  display: inline-block !important;
+  display: inline-block;
   padding: 0.5rem 1rem;
-  /* background-color: #fdfdfc; */
   border: 1px solid #ccc;
   border-radius: 4px;
   text-decoration: none;
   margin-top: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #d0d0d0;
+  color: #1a1a1a;
 }
 
 .skills-list {
