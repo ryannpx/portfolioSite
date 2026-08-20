@@ -99,6 +99,7 @@ ul {
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 100;
+  animation: fadeIn 0.55s ease both;
 }
 
 .site-nav {
@@ -209,6 +210,7 @@ ul {
   min-height: 100%;
   padding: 5rem 2rem 2rem;
   gap: 1.5rem;
+  animation: fadeIn 0.6s ease 0.08s both;
 }
 
 .about-image img {
@@ -216,7 +218,7 @@ ul {
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
-  
+  animation: fadeIn 0.55s ease 0.18s both;
 }
 
 .bio-box {
@@ -230,6 +232,7 @@ ul {
   overflow: visible;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.55s ease 0.28s both;
 }
 
 .bio-box p {
@@ -251,6 +254,7 @@ ul {
   justify-content: center;
   align-items: flex-start;
   background-color: #ffffed;
+  animation: fadeSlideInSoft 0.65s ease 0.12s both;
 }
 
 .btn {
@@ -327,6 +331,8 @@ ul {
   border-radius: 8px;
   overflow: hidden;
   padding-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .project-card h3,
@@ -341,6 +347,7 @@ ul {
 .carousel {
   position: relative;
   --carousel-height: 260px;
+  background: #fff;
 }
 
 .carousel-track {
@@ -359,7 +366,7 @@ ul {
   scroll-snap-align: center;
   margin: 0;
   padding: 0.5rem;
-  background: #fdfdfc;
+  background: #fff;
 }
 
 .carousel-slide img {
@@ -537,4 +544,38 @@ a:focus-visible,
 .btn:focus-visible {
   outline: 2px solid #8b9dc3;
   outline-offset: 2px;
+}
+
+/* === PAGE LOAD ANIMATIONS ===
+   Soft fade-ins only — short, subtle, professional.
+*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideInSoft {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .about-image,
+  .about-image img,
+  .bio-box,
+  .about-content {
+    animation: none;
+  }
 }
