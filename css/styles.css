@@ -1,25 +1,7 @@
 /* ==========================================================================
-   HCI Portfolio — styles.css
-   YOU own the visual design. Each section below has TODO hints.
-   Work top to bottom. Ask for feedback after each section.
+   Ryann Penrod — Portfolio styles
+   Soft off-white base + rose accent for an HCI-forward look
    ========================================================================== */
-
-/* === STEP 1: GLOBAL — your turn ===
-   Hints:
-   - Define CSS variables in :root for colors, fonts, spacing
-   - @import or <link> a Google Font in index.html <head>
-   - Use box-sizing: border-box on everything
-   Suggested starter variables:
-     --color-bg: #fafafa;
-     --color-text: #1a1a1a;
-     --color-muted: #666;
-     --color-accent: #8b9dc3;
-     --font-body: system-ui, sans-serif;
-     --space-sm: 0.5rem;
-     --space-md: 1rem;
-     --space-lg: 2rem;
-     --max-width: 960px;
-*/
 
 *,
 *::before,
@@ -29,8 +11,19 @@
 
 :root {
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --color-text: #1a1a1a;
-  --color-muted: #555;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1f2933;
+  --color-muted: #5c6b73;
+  --color-border: #e6e8eb;
+  --color-accent: #8b5a6b;
+  --color-accent-hover: #734a58;
+  --color-accent-soft: #f3e6ea;
+  --color-accent-softer: #faf2f4;
+  --max-width: 1080px;
+  --radius: 12px;
+  --shadow-sm: 0 2px 8px rgba(31, 41, 51, 0.06);
+  --shadow-md: 0 8px 24px rgba(31, 41, 51, 0.1);
 }
 
 html {
@@ -42,7 +35,23 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   color: var(--color-text);
-  background-color: #ffffed;
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+/* Soft pink stripe wash — low opacity so it stays professional */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("../assets/images/pinkstr.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
 }
 
 #main {
@@ -64,29 +73,23 @@ ul {
   padding-left: 1.25rem;
 }
 
-/* Skip link — keep visible on focus for accessibility */
+/* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
   padding: 0.5rem 1rem;
-  background: #000;
+  background: var(--color-text);
   color: #fff;
-  z-index: 100;
+  z-index: 200;
 }
 
 .skip-link:focus {
-  left: 0;
+  left: 1rem;
+  top: 1rem;
 }
 
-/* === STEP 2: NAV — your turn ===
-   Hints:
-   - .site-header: sticky top, light background, subtle shadow optional
-   - .site-nav: display flex; justify-content space-between; align-items center
-   - .nav-links: flex list, remove bullets (list-style none), gap between items
-   - .nav-contact: flex row for email/LinkedIn/GitHub links
-   - Style link hover states
-*/
+/* === NAV === */
 
 .site-header {
   position: fixed;
@@ -95,9 +98,11 @@ ul {
   right: 1rem;
   margin: 0;
   padding: 0.75rem 1.5rem;
-  background-color: #fdfdfc;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
   z-index: 100;
   animation: fadeIn 0.55s ease both;
 }
@@ -108,11 +113,14 @@ ul {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
 }
 
 .nav-logo {
   text-decoration: none;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .nav-links {
@@ -120,20 +128,32 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .nav-links a {
   text-decoration: none;
+  color: var(--color-muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-accent);
 }
 
 .nav-contact {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
-/* Icon links: swap the size/color values to restyle */
+.nav-contact-label {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-right: 0.25rem;
+}
+
 .icon-link {
   display: inline-flex;
   align-items: center;
@@ -142,7 +162,7 @@ ul {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  color: #1a1a1a;
+  color: var(--color-text);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -154,185 +174,192 @@ ul {
 }
 
 .icon-link:hover {
-  background-color: #f7d7e3;
-  color: #000;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
 }
 
-.nav-contact-label {
-  /* TODO: optional — hide on small screens */
-}
-
-/* === STEP 3: HERO — your turn ===
-   Hints (inspired by centered circular-photo layout):
-   - .hero: text-align center, generous padding
-   - .hero-photo: width/height equal, border-radius 50%, object-fit cover, margin auto
-   - .hero-title: slightly smaller than h1, muted color
-   - .hero-tagline: smaller still, max-width for readability
-   Optional: uncomment banner in index.html and style .hero-banner img { width 100%; height auto; }
-*/
-
-
-
-
-
-/* === STEP 4: ABOUT — your turn ===
-   Hints (inspired by two-column intro with bio box):
-   - .about-grid: display grid; grid-template-columns 1fr 1fr; gap
-   - .bio-box: background #f0f0f0 or var, border-radius, padding
-   - .btn-resume: border, padding, inline-block, hover state
-   - .skills-list: flex wrap or inline list with pill-style tags
-   - Stack to one column on mobile (see Step 7)
-*/
+/* === HERO / ABOUT === */
 
 .about {
-  padding: 0;
-  max-width: none;
-  margin: 0;
+  padding: 7rem 1.5rem 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-items: stretch;
-  min-height: 100vh;
+  grid-template-columns: minmax(200px, 280px) 1fr;
+  gap: 2.5rem 3rem;
+  align-items: center;
+  min-height: auto;
 }
 
 .about-image {
-  background-image: url("../assets/images/pinkstr.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
-  padding: 5rem 2rem 2rem;
-  gap: 1.5rem;
+  padding: 0;
+  background: none;
   animation: fadeIn 0.6s ease 0.08s both;
 }
 
+.hero-photo,
 .about-image img {
-  max-width: 250px;
   width: 100%;
-  border-radius: 12px;
+  max-width: 280px;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
   animation: fadeIn 0.55s ease 0.18s both;
 }
 
-.bio-box {
-  background-color: #fdfdfc;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  max-width: 340px;
-  width: 100%;
-  max-height: none;
-  height: auto;
-  overflow: visible;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  animation: fadeIn 0.55s ease 0.28s both;
-}
-
-.bio-box p {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.45;
-  color: #1a1a1a;
-}
-
-.bio-box p + p {
-  margin-top: 0.6rem;
-}
-
 .about-content {
-  padding: 5rem 3rem 2rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: #ffffed;
+  background: transparent;
   animation: fadeSlideInSoft 0.65s ease 0.12s both;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-decoration: none;
-  margin-top: 1rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+.about-content h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
-.btn:hover {
-  background-color: #d0d0d0;
-  color: #1a1a1a;
+.hero-subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  font-weight: 400;
 }
 
-.skills-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0;
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
 }
 
-.skills-list li {
-  background: #eee;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.875rem;
+.bio-text {
+  max-width: 42rem;
 }
 
-/* === STEP 5: PROJECTS — your turn ===
-   Hints:
-   - .section-header: pale blue/accent background bar, full width feel
-   - .projects-grid: display grid; grid-template-columns repeat(auto-fit, minmax(280px, 1fr)); gap
-   - .project-card: border or shadow, border-radius, overflow hidden
-   - .badge: small pill — .badge-research vs .badge-wip different colors
-   - Card hover: transform translateY or box-shadow transition
-*/
+.bio-text p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.bio-text p + p {
+  margin-top: 1rem;
+}
+
+/* === BUTTONS === */
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+/* Project card buttons — quieter secondary style */
+.project-card .btn {
+  margin-top: 0.75rem;
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-border);
+  font-weight: 500;
+}
+
+.project-card .btn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
+}
+
+/* === PROJECTS === */
 
 .projects {
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem 4rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
 }
 
 .section-header {
-  background: #e8eef5;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 12px;
+  background: var(--color-accent-soft);
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius);
 }
 
 .section-header h2 {
   margin: 0;
+  color: var(--color-accent-hover);
+  letter-spacing: -0.02em;
 }
 
 .projects-view-label {
-  font-size: 0.875rem;
-  color: #666;
-  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin: 0 0 1.5rem;
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  max-width: 960px;
+  max-width: none;
   margin-inline: auto;
 }
 
 .project-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   overflow: hidden;
-  padding-bottom: 1rem;
-  background: #fff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding-bottom: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .project-card h3,
@@ -342,12 +369,16 @@ ul {
   margin-right: 1rem;
 }
 
-/* Carousel — one slide visible at a time, arrows scroll the track.
-   Tweak: --carousel-height for slide size, .carousel-btn for arrow style. */
+.project-card h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Carousel */
 .carousel {
   position: relative;
   --carousel-height: 260px;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .carousel-track {
@@ -366,7 +397,7 @@ ul {
   scroll-snap-align: center;
   margin: 0;
   padding: 0.5rem;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .carousel-slide img {
@@ -378,7 +409,7 @@ ul {
 .carousel-slide figcaption {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: #666;
+  color: var(--color-muted);
   text-align: center;
 }
 
@@ -388,16 +419,19 @@ ul {
   transform: translateY(-50%);
   width: 2rem;
   height: 2rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
 }
 
 .carousel-btn:hover {
-  background: #fff;
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .carousel-prev {
@@ -412,36 +446,46 @@ ul {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   margin: 1rem 1rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
 }
 
 .badge-research {
-  background: #dbeafe;
-  color: #1e40af;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
 }
 
 .badge-wip {
-  background: #fef3c7;
-  color: #92400e;
+  background: #efe9e4;
+  color: #6b5344;
 }
 
 .project-updated {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-muted);
 }
 
-/* === STEP 6: CONTACT & FOOTER — your turn ===
-   Hints:
-   - .contact: centered text, padding
-   - .contact-links: list-style none, flex column or row with gap
-   - .site-footer: muted text, centered, border-top optional
-*/
+.project-description {
+  color: var(--color-text);
+}
+
+/* === CONTACT & FOOTER === */
 
 .contact {
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
   text-align: center;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+.contact h2 {
+  margin-top: 0;
+}
+
+.contact p {
+  color: var(--color-muted);
 }
 
 .contact-links {
@@ -453,28 +497,38 @@ ul {
   flex-wrap: wrap;
 }
 
+.contact-links a {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
 .site-footer {
   text-align: center;
   padding: 1.5rem 1rem;
   font-size: 0.875rem;
-  color: #666;
-  border-top: 1px solid #eee;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
 }
 
-/* === CASE STUDY PAGES (project-research.html, project-personal.html) ===
-   Style after homepage sections are done, or reuse shared classes.
-*/
+/* === CASE STUDY PAGES === */
 
 .case-study {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 6rem 1rem 2rem;
 }
 
 .back-link {
   display: inline-block;
   margin-bottom: 1.5rem;
   text-decoration: none;
+  color: var(--color-accent);
 }
 
 .back-link:hover {
@@ -483,7 +537,7 @@ ul {
 
 .case-study-subtitle {
   font-size: 1.125rem;
-  color: #666;
+  color: var(--color-muted);
 }
 
 .screenshot {
@@ -491,19 +545,19 @@ ul {
 }
 
 .screenshot img {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
 }
 
 .screenshot figcaption {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-muted);
   margin-top: 0.5rem;
 }
 
 .screenshot-note {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-muted);
   font-style: italic;
 }
 
@@ -516,7 +570,8 @@ ul {
 }
 
 .tech-stack li {
-  background: #eee;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.875rem;
@@ -524,31 +579,48 @@ ul {
 
 .link-note {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-muted);
 }
 
-.site-footer {
-  background-color: #fdfdfc;
-}
+/* === RESPONSIVE === */
 
 @media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
+  .about {
+    padding-top: 6.5rem;
   }
 
-  /* TODO: add more mobile tweaks */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    text-align: center;
+  }
+
+  .about-content {
+    align-items: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .bio-text {
+    text-align: left;
+  }
+
+  .nav-contact-label {
+    display: none;
+  }
 }
 
-/* TODO: focus states for accessibility */
+/* Focus states */
 a:focus-visible,
-.btn:focus-visible {
-  outline: 2px solid #8b9dc3;
+.btn:focus-visible,
+.carousel-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* === PAGE LOAD ANIMATIONS ===
-   Soft fade-ins only — short, subtle, professional.
-*/
+/* === PAGE LOAD ANIMATIONS === */
 
 @keyframes fadeIn {
   from {
@@ -574,8 +646,14 @@ a:focus-visible,
   .site-header,
   .about-image,
   .about-image img,
-  .bio-box,
-  .about-content {
+  .hero-photo,
+  .about-content,
+  .project-card {
     animation: none;
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
   }
 }
