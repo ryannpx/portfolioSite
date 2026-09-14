@@ -6,7 +6,7 @@
   <meta name="description" content="Ryann Penrod">
   <title>Ryann Penrod</title>
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
-  <link rel="stylesheet" href="css/styles.css?v=13">
+  <link rel="stylesheet" href="css/styles.css?v=16">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -50,12 +50,22 @@
     <div class="about-grid">
       <div class="about-image">
         <img
+          class="hero-photo"
           src="assets/images/headshot.jpg"
-          alt="<!-- REPLACE: Photo of Your Name -->"
-          width="200"
-          height="300"
+          alt="Portrait of Ryann Penrod"
+          width="280"
+          height="340"
         >
-        <div class="bio-box">
+      </div>
+
+      <div class="about-content">
+        <h1>Hi, I'm Ryann Penrod.</h1>
+        <p class="hero-subtitle">Welcome to my portfolio!</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Personal Projects & Research</a>
+          <a class="btn btn-secondary" href="assets/RESUMERP.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </div>
+        <div class="bio-text">
           <p>
             I'm a Computer Science student at Brigham Young University with a passion for building software that looks beautiful, solves real problems, and is easy to use. Alongside my coursework, I work as a software engineering research assistant in BYU's Family History Technology Lab, where I help develop applications used in collaboration with FamilySearch. I'm especially interested in front-end development, software engineering, web design, and creating intuitive user experiences.
           </p>
@@ -63,19 +73,6 @@
             Outside of coding, I enjoy skiing, tennis, hiking, and spending time with my family and friends.
           </p>
         </div>
-      </div>
-
-      <div class="about-content">
-        <h2>Hi, I'm Ryann Penrod.</h2>
-        <h3> Welcome to my portfolio!</h3>
-        <a class="btn btn-resume" href="assets/images/JRyannPenrodRes.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-        <a class="btn btn-projects" href="#projects">Personal Projects</a>
-        <ul class="skills-list" aria-label="Skills and focus areas">
-          <li><!-- REPLACE: e.g. User Research --></li>
-          <li><!-- REPLACE: e.g. Prototyping --></li>
-          <li><!-- REPLACE: e.g. JavaScript --></li>
-          <li><!-- REPLACE: e.g. Usability Testing --></li>
-        </ul>
       </div>
     </div>
   </section>
@@ -117,8 +114,40 @@
         <p class="project-updated">BYU Family History Technology Lab</p>
         <p class="project-description">A web application that helps users find and connect with their relatives.</p>
 
-        <a class="btn" href="https://relativefinder.org/" target="_blank">Relative Finder Site</a>
-        <a class="btn" href="" >HCI Case Study</a>
+        <a class="btn" href="https://relativefinder.org/" target="_blank" rel="noopener noreferrer">Relative Finder Site</a>
+        <a class="btn" href="">HCI Case Study</a>
+      </article>
+
+      <article class="project-card">
+        <span class="badge badge-research">Research · Live</span>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track" data-carousel-track>
+            <figure class="carousel-slide">
+              <img src="assets/images/gift-home.png" alt="Project G.I.F.T. home page with three resource cards" loading="lazy">
+              <figcaption>Home</figcaption>
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/gift-search.png" alt="Find Your Ancestor search form on Project G.I.F.T." loading="lazy">
+              <figcaption>Ancestor search</figcaption>
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/gift-results.png" alt="Grid of ancestor profile cards from search results" loading="lazy">
+              <figcaption>Search results</figcaption>
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/images/gift-connect.png" alt="Connect This Ancestor form with profile and email fields" loading="lazy">
+              <figcaption>Connect ancestor</figcaption>
+            </figure>
+          </div>
+
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous image" data-carousel-prev>&#8249;</button>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Next image" data-carousel-next>&#8250;</button>
+        </div>
+
+        <h3>Project G.I.F.T.</h3>
+        <p class="project-updated">BYU Family History Technology Lab</p>
+        <p class="project-description">Give friends the gift of family connection — a FamilySearch collaboration helping people find and share ancestors.</p>
+        <a class="btn" href="https://gift.fhtl.org" target="_blank" rel="noopener noreferrer">Visit Project G.I.F.T.</a>
       </article>
 
       <article class="project-card">
@@ -175,6 +204,7 @@
       </li>
       <li>
         <a href="https://github.com/ryannpx" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </li>
     </ul>
   </section>
   </main>
