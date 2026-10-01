@@ -15,11 +15,3 @@ Personal portfolio showcasing my UX, HCI, and front-end work, including research
 - Vanilla JavaScript for the image carousels
 
 Accessibility features include a skip link, labeled icon links, visible focus states, descriptive alt text, and reduced-motion support.
-
-## Run locally
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit [http://localhost:8000](http://localhost:8000).

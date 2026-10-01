@@ -148,6 +148,31 @@ ul {
   gap: 0.35rem;
 }
 
+/* Icon links: swap the size/color values to restyle */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #1a1a1a;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-link svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+.icon-link:hover {
+  background-color: #f7d7e3;
+  color: #000;
+}
+
 .nav-contact-label {
   font-size: 0.875rem;
   color: var(--color-muted);
