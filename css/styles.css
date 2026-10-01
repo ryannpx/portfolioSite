@@ -471,6 +471,14 @@ ul {
   color: var(--color-text);
 }
 
+.project-note {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
 /* === CONTACT & FOOTER === */
 
 .contact {
